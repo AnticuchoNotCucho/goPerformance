@@ -1,23 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
+import {Button, Switch} from "@chakra-ui/react";
+import {Route, Routes, useNavigate} from "react-router-dom";
+import Login from "./views/Login";
+import Home from "./views/Home";
+import {Usuarios} from "./components/Usuarios";
+import {Aprendiendo} from "./views/Aprendiendo";
 
 function App() {
+  let navigate = useNavigate();
+  function handleClick() {
+    navigate('/login'); // Reemplaza '/ruta-deseada' con tu ruta
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/*" element={<Login />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/aprendiendo" element={<Aprendiendo/>} />
+      </Routes>
     </div>
   );
 }
